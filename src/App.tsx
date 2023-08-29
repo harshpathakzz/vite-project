@@ -1,15 +1,17 @@
-import React from 'react';
-import AccordionButton from './components/AccordionButton';
+// src/App.tsx
+import SidebarCard from './components/SidebarCard';
+import './App.css';
 
-const App: React.FC = () => {
+function App() {
   return (
-    <div>
-      <AccordionButton direction="left" />
-      <AccordionButton direction="right" />
-      <AccordionButton direction="top" />
-      <AccordionButton direction="bottom" />
+    <div className="App">
+      <h1>Sidebar Card Example</h1>
+      <SidebarCard buttonText="Toggle Sidebar" cardWidth="400px" cardHeight="200px">
+        <h2>Custom Content</h2>
+        <p>This is custom content inside the card.</p>
+      </SidebarCard>
     </div>
   );
-};
+}
 
 export default App;

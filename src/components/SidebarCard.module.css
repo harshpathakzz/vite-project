@@ -1,0 +1,27 @@
+/* src/SidebarCard.module.css */
+
+.sidebarContainer {
+  position: relative;
+}
+
+.sidebarButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: -100%; /* Initially off-screen */
+  background-color: blue;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: left 0.3s ease-in-out;
+}
+
+.card.active {
+  left: 0; /* Slide the card in from the left */
+}
