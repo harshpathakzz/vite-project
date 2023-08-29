@@ -1,0 +1,72 @@
+.collapseMenuCard {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  transition: width 0.3s ease-in-out;
+  background-color: blue;
+}
+
+.arrowButton {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.arrowIcon {
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.cardContentWrapper {
+  position: relative;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.cardContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform-origin: top left;
+  transform: scaleX(0) scaleY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Direction styles */
+.top .cardContent {
+  transform-origin: bottom left;
+}
+
+.bottom .cardContent {
+  transform-origin: top left;
+}
+
+.left .cardContent {
+  transform-origin: top right;
+}
+
+.right .cardContent {
+  transform-origin: top left;
+}
+
+.collapseMenuCard:hover {
+  width: 200px;
+}
+
+.collapseMenuCard:hover .cardContentWrapper {
+  max-height: 1000px; /* Set a value that's taller than the content */
+}
+
+.collapseMenuCard:hover .cardContent {
+  transform: scaleX(1) scaleY(1);
+}

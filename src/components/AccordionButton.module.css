@@ -1,0 +1,60 @@
+/* AccordionButton.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.content {
+  background-color: #f9f9f9;
+  padding: 10px;
+  width: 100%;
+}
+
+.expandIcon {
+  transition: transform 0.3s ease;
+}
+
+.top {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.bottom {
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+.left {
+  flex-direction: row;
+  align-items: center; /* Adjust alignment */
+}
+
+.right {
+  flex-direction: row-reverse;
+  align-items: center; /* Adjust alignment */
+}
+
+.leftIcon {
+  margin-right: 10px;
+}
+
+.rightIcon {
+  margin-left: 10px;
+}
+
+.rotatedIcon {
+  transform: rotate(180deg);
+}
