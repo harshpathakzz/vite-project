@@ -17,20 +17,22 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({ direction }) => {
   return (
     <div className={`${styles.container} ${styles[direction]}`}>
       <button className={styles.button} onClick={toggleAccordion}>
-        {expanded ? (
-          <ExpandLess
-            className={`${styles.expandIcon} ${
-              styles[`${direction}Icon`]
-            } ${expanded ? styles.rotatedIcon : ''}`}
-          />
-        ) : (
-          <ExpandMore
-            className={`${styles.expandIcon} ${styles[`${direction}Icon`]}`}
-          />
-        )}
+        <div
+          className={`${styles.expandIcon} ${
+            styles[`${direction}Icon`]
+          } ${expanded ? styles.rotatedIcon : ''}`}
+        >
+          {expanded ? <ExpandLess /> : <ExpandMore />}
+        </div>
         Toggle Accordion
       </button>
-      {expanded && <div className={styles.content}>Accordion Content Here</div>}
+      <div
+        className={`${styles.content} ${
+          expanded ? styles[`${direction}Content expandedContent`] : styles[`${direction}Content`]
+        } ${styles.slideAnimation}`}
+      >
+        Accordion Content Here
+      </div>
     </div>
   );
 };

@@ -1,9 +1,9 @@
-/* AccordionButton.module.css */
 .container {
   display: flex;
   flex-direction: column;
   width: 300px;
   margin: 20px;
+  overflow: hidden;
 }
 
 .button {
@@ -18,13 +18,48 @@
 }
 
 .content {
-  background-color: #f9f9f9;
+  background-color: #6c0c0c;
   padding: 10px;
   width: 100%;
+  overflow: hidden;
 }
 
 .expandIcon {
   transition: transform 0.3s ease;
+}
+
+.slideAnimation {
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease; /* Include width in the transition */
+}
+
+.topIcon.expandedIcon,
+.bottomIcon.expandedIcon {
+  transform: rotate(180deg);
+}
+
+.topContent.expandedContent,
+.bottomContent.expandedContent {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.topContent,
+.bottomContent {
+  transform: translateY(0);
+  opacity: 0;
+}
+
+/* Corrected animation for left direction */
+.leftContent.expandedContent,
+.rightContent.expandedContent {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.leftContent,
+.rightContent {
+  transform: none; /* Change this to initial value */
+  opacity: 0;
 }
 
 .top {
@@ -39,12 +74,12 @@
 
 .left {
   flex-direction: row;
-  align-items: center; /* Adjust alignment */
+  align-items: center;
 }
 
 .right {
   flex-direction: row-reverse;
-  align-items: center; /* Adjust alignment */
+  align-items: center;
 }
 
 .leftIcon {
