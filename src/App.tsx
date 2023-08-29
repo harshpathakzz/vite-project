@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>Sidebar Card Example</h1>
-      <SidebarCard buttonText="Toggle Sidebar" cardWidth="400px" cardHeight="200px">
+      <SidebarCard  cardWidth="400px" cardHeight="200px">
         <h2>Custom Content</h2>
         <p>This is custom content inside the card.</p>
       </SidebarCard>

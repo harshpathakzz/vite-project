@@ -2,15 +2,17 @@
 
 import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import styles from './SidebarCard.module.css';
+import IconButton from '@mui/material/IconButton';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface SidebarCardProps {
-  buttonText: string;
   cardWidth?: string;
   cardHeight?: string;
   children?: ReactNode;
 }
 
-const SidebarCard: React.FC<SidebarCardProps> = ({ buttonText, cardWidth = '300px', cardHeight = '100%', children }) => {
+const SidebarCard: React.FC<SidebarCardProps> = ({ cardWidth = '300px', cardHeight = '100%', children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -18,34 +20,47 @@ const SidebarCard: React.FC<SidebarCardProps> = ({ buttonText, cardWidth = '300p
     setIsOpen(!isOpen);
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
-      setIsOpen(false);
-    }
+  const handleClose = () => {
+    setIsOpen(false);
   };
+
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('mousedown', handleClose);
     } else {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClose);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClose);
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClose);
+  
+    return () => {
+      document.removeEventListener('mousedown', handleClose);
+    };
+  }, []);
+  
   return (
     <div className={styles.sidebarContainer}>
-      <button className={styles.sidebarButton} onClick={toggleSidebar}>
-        {buttonText}
-      </button>
+      {!isOpen &&
+      <IconButton className={styles.sidebarButton} onClick={toggleSidebar}>
+         <KeyboardArrowRightIcon />
+      </IconButton>}
       <div
         ref={cardRef}
         style={{ width: cardWidth, height: cardHeight }}
         className={`${styles.card} ${isOpen ? styles.active : ''}`}
       >
+        {isOpen && (
+          <IconButton className={styles.closeButton} onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
+        )}
         {children}
       </div>
     </div>
